@@ -1,0 +1,6 @@
+/home/pbhatt09/test/practice/embeddedSensorSystem/build_tidy/CMakeFiles/sensor_decoder.dir
+/home/pbhatt09/test/practice/embeddedSensorSystem/build_tidy/CMakeFiles/Tests_e.dir
+/home/pbhatt09/test/practice/embeddedSensorSystem/build_tidy/CMakeFiles/CmdEncTests_e.dir
+/home/pbhatt09/test/practice/embeddedSensorSystem/build_tidy/CMakeFiles/test.dir
+/home/pbhatt09/test/practice/embeddedSensorSystem/build_tidy/CMakeFiles/edit_cache.dir
+/home/pbhatt09/test/practice/embeddedSensorSystem/build_tidy/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,19 @@
+# ninja log v5
+0	100	1783639958313490845	CMakeFiles/sensor_decoder.dir/src/HumidityDecoder.cpp.o	410dbfae00276f35
+5	499	1783637709363492559	CMakeFiles/sensor_decoder.dir/src/MultiReadingTemperatureDecoder.cpp.o	b377eaf12965a914
+275	374	1783639958593490842	libsensor_decoder.a	bcae5e9f7954e984
+242	312	1783608811253571572	CMakeFiles/sensor_decoder.dir/src/CommandEncoder.cpp.o	690d2c9b480f325d
+312	10828	1783608821753571909	CMakeFiles/CmdEncTests_e.dir/tests/SensorTestsCmdEncode.cpp.o	4bb6f12db81b731e
+499	687	1783637709543492561	CMakeFiles/sensor_decoder.dir/src/TestTemperatureDecoder.cpp.o	f2605d66deb1684
+255	347	1783608811293571573	CMakeFiles/Tests_e.dir/tests/TestObject.cpp.o	462935a7c14464e
+5	499	1783637709363492559	CMakeFiles/sensor_decoder.dir/src/TemperatureInKelvinDecoder.cpp.o	ebc0fafaf3695a3e
+498	680	1783637709533492561	CMakeFiles/sensor_decoder.dir/src/AirpressureInPascalDecoder.cpp.o	dcc24f71a02b3eea
+0	275	1783639958493490843	CMakeFiles/sensor_decoder.dir/src/SensorServer.cpp.o	6d2b70b9ceabf52d
+4	498	1783637709363492559	CMakeFiles/sensor_decoder.dir/src/TemperatureInCelsiusDecoder.cpp.o	e4e515e26fe8c299
+499	697	1783637709553492561	CMakeFiles/sensor_decoder.dir/src/CombinedSensorDecoder.cpp.o	bc16f84f48e455ca
+243	10923	1783608821853571910	CMakeFiles/Tests_e.dir/tests/SensorTests.cpp.o	c2d028117a03bb55
+10923	11347	1783608822293571913	Tests_e	f40b417c0dbd1504
+10828	11244	1783608822183571912	CmdEncTests_e	1c9341ab34cf2a4d
+1	97	1783640206813491836	CMakeFiles/sensor_decoder.dir/src/HumidityDecoder.cpp.o	410dbfae00276f35
+0	254	1783640206973491837	CMakeFiles/sensor_decoder.dir/src/SensorServer.cpp.o	6d2b70b9ceabf52d
+254	345	1783640207073491837	libsensor_decoder.a	bcae5e9f7954e984
