@@ -21,8 +21,6 @@ enum class MessageType : std::uint16_t
     AirpressurePascal       = 4U,
     CombinedSensor          = 5U,
     TestTemperature         = 6U,
-    Humidity = 7U,
-    CO2 = 8U,
 };
 
 using DecoderResult = FixedCapacityArray<SensorValue, 16U>;

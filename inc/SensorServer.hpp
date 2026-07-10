@@ -60,7 +60,7 @@ class SensorServer final
     using DecodeFn = DecoderResult (*)(std::array<uint8_t, kMaxMessageBytes> const&);
 
     static constexpr std::size_t kServerBufferCapacity{256U};
-    static constexpr std::size_t kDecoderTableSize{9U};
+    static constexpr std::size_t kDecoderTableSize{7U};
 
     std::array<DecodeFn, kDecoderTableSize>    decoderTable{};
     DecodedValues                              decodedValues{};
