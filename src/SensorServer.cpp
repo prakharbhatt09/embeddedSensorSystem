@@ -1,4 +1,6 @@
 #include "SensorServer.hpp"
+#include "CO2Decoder.hpp"
+#include "HumidityDecoder.hpp"
 #include <algorithm>
 #include <array>
 #include <cstddef>
@@ -12,14 +14,13 @@ void SensorServer::initializeDecoders()
   decoderTable.at((std::size_t)(MessageType::AirpressurePascal))       = &decodeAirpressureInPascal;
   decoderTable.at((std::size_t)(MessageType::CombinedSensor))          = &decodeCombinedSensor;
   decoderTable.at((std::size_t)(MessageType::TestTemperature))         = &decodeTestTemperature;
+  decoderTable.at((std::size_t)(MessageType::Humidity))                = &decodeHumidity;
+  decoderTable.at((std::size_t)(MessageType::CO2))                     = &decodeCO2;
 }
 
 std::size_t SensorServer::getMessageLength(std::array<uint8_t, kMaxMessageBytes> const& msg) const
 {
-  uint16_t const messageType
-  {
-    readBigEndianU16(msg, 0U)
-  };
+  uint16_t const messageType{ readBigEndian<uint16_t>(msg, 0U) };
   switch (messageType)
   {
     case (uint16_t)(MessageType::TemperatureCelsius):
@@ -30,6 +31,12 @@ std::size_t SensorServer::getMessageLength(std::array<uint8_t, kMaxMessageBytes>
       return kBytesPerMultiTemperatureReading * (std::size_t)(msg.at(2U)) + kMultiReadingTemperatureHeaderBytes;
     case (uint16_t)(MessageType::AirpressurePascal):
       return kAirpressureLength;
+    case (uint16_t)(MessageType::Humidity):
+      return kHumidityDecoderLength;
+
+    case (uint16_t)(MessageType::CO2):
+      return kCO2DecoderLength;
+
     default:
       return 0U;
   }
@@ -66,7 +73,7 @@ void SensorServer::decodeBuffer()
 void SensorServer::Decoder(std::array<uint8_t, kMaxMessageBytes> const& encodedMessage)
 {
   /// Step 1: read which kind of message this is.
-  uint16_t const messageType{ readBigEndianU16(encodedMessage, 0U) };
+  uint16_t const messageType{ readBigEndian<uint16_t>(encodedMessage, 0U) };
   if (messageType >= kDecoderTableSize)
   {
     return;

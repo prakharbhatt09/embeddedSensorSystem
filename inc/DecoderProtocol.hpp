@@ -3,6 +3,7 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 #include "FixedCapacityArray.hpp"
 #include "SensorValue.hpp"
 
@@ -20,16 +21,28 @@ enum class MessageType : std::uint16_t
     AirpressurePascal       = 4U,
     CombinedSensor          = 5U,
     TestTemperature         = 6U,
+    Humidity = 7U,
+    CO2 = 8U,
 };
 
 using DecoderResult = FixedCapacityArray<SensorValue, 16U>;
 
-/// Every decoder reads its 16-bit fields as big-endian (high byte first) out
-/// of the message buffer at some offset -- shared here instead of being
-/// reimplemented at each call site.
-inline uint16_t readBigEndianU16(std::array<uint8_t, kMaxMessageBytes> const& msg, std::size_t idx)
+/// Every decoder reads its multi-byte fields as big-endian (high byte first)
+/// out of the message buffer at some offset -- shared here instead of being
+/// reimplemented at each call site. T must be an unsigned integer type: a
+/// signed T would make `value << 8U` undefined behavior the moment the
+/// shift touches the sign bit.
+template<typename T>
+inline auto readBigEndian(std::array<uint8_t, kMaxMessageBytes> const& msg, std::size_t idx) -> T
 {
-    return (uint16_t)((msg.at(idx) << 8U) | msg.at(idx + 1U));
+    static_assert(std::is_unsigned<T>::value,
+                  "readBigEndian<T> requires T to be an unsigned integer type");
+    T value{0};
+    for (std::size_t i{0U}; i < sizeof(T); ++i)
+    {
+        value = (T)((value << 8U) | (T)(msg.at(idx + i)));
+    }
+    return value;
 }
 
 #endif

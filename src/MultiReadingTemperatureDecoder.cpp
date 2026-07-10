@@ -11,7 +11,7 @@ DecoderResult decodeMultiReadingTemperature(std::array<uint8_t, kMaxMessageBytes
     for (uint8_t i{0U}; i < nrOfReadings; ++i)
     {
         std::size_t const idx{kMultiReadingTemperatureHeaderBytes + kBytesPerMultiTemperatureReading * (std::size_t)(i)};
-        uint16_t const tempCelsius{readBigEndianU16(msg, idx)};
+        uint16_t const tempCelsius{readBigEndian<uint16_t>(msg, idx)};
         if (!result.push(SensorValue{(double)(tempCelsius), SensorType{"Temperature"}, SensorUnit{"Celsius"}}))
         {
             break;

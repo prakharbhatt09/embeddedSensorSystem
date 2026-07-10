@@ -25,7 +25,7 @@ add_library(sensor_decoder
     src/AirpressureInPascalDecoder.cpp
     src/CombinedSensorDecoder.cpp
     src/TestTemperatureDecoder.cpp
-    src/CommandEncoder.cpp)
+    src/CommandEncoder.cpp src/HumidityDecoder.cpp src/CO2Decoder.cpp)
 
 target_include_directories(sensor_decoder PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/inc)
 

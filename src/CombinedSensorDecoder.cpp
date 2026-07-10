@@ -16,7 +16,7 @@ DecoderResult decodeCombinedSensor(std::array<uint8_t, kMaxMessageBytes> const& 
     std::size_t idx{2U};
     while ((idx + 1U) < kMaxMessageBytes)
     {
-        uint16_t const messageFlag{readBigEndianU16(msg, idx)};
+        uint16_t const messageFlag{readBigEndian<uint16_t>(msg, idx)};
         idx += 2U;
         if (messageFlag == 0U)
         {
@@ -33,7 +33,7 @@ DecoderResult decodeCombinedSensor(std::array<uint8_t, kMaxMessageBytes> const& 
         }
         if ((messageFlag & pressureFlag) != 0U)
         {
-            uint16_t const pressure{readBigEndianU16(msg, idx)};
+            uint16_t const pressure{readBigEndian<uint16_t>(msg, idx)};
             if (!result.push(SensorValue{(double)(pressure), SensorType{"Airpressure"}, SensorUnit{"Pascal"}}))
             {
                 break;
