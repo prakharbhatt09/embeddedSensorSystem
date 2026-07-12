@@ -36,7 +36,7 @@ TEST_CASE("Server decodes for a TempSensor in Kelvin")
     SensorServer server;
     server.initializeDecoders();
 
-    std::array<uint8_t, kMaxMessageBytes> const msg{0U, 2U, 1U, 44U}; // 300 K = 27 C
+    std::array<uint8_t, kMaxMessageBytes> const msg{0U, 2U, 1U, 44U}; /// 300 K = 27 C
     server.Decoder(msg);
 
     REQUIRE(server.getDecodedCount() == 1U);

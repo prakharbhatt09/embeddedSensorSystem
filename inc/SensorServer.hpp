@@ -41,7 +41,7 @@ class SensorServer final
     std::size_t getDecodedCount() const noexcept;
     void addDecodedValue(SensorValue const& value);
     void decodeBuffer();
-    std::size_t getMessageLength(std::array<uint8_t, kMaxMessageBytes> const& msg) const;
+    static std::size_t getMessageLength(std::array<uint8_t, kMaxMessageBytes> const& msg);
 
     template<std::size_t N>
     void receiveDataFromSensor(std::array<uint8_t, N> const& data)

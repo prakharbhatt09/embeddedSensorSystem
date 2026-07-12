@@ -14,7 +14,7 @@ void SensorServer::initializeDecoders()
   decoderTable.at((std::size_t)(MessageType::TestTemperature))         = &decodeTestTemperature;
 }
 
-std::size_t SensorServer::getMessageLength(std::array<uint8_t, kMaxMessageBytes> const& msg) const
+std::size_t SensorServer::getMessageLength(std::array<uint8_t, kMaxMessageBytes> const& msg) 
 {
   uint16_t const messageType{ readBigEndian<uint16_t>(msg, 0U) };
   switch (messageType)
